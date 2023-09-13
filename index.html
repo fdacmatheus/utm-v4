@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de UTM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #generatedLink {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de UTM</h1>
+        <form id="utmForm">
+
+            <label for="link">Link:</label>
+            <input type="text" id="link" name="link" required>xx`
+            <label for="utm_source">Source:</label>
+            <input type="text" id="utm_source" name="utm_source" required>
+
+            <label for="utm_medium">Medium:</label>
+            <input type="text" id="utm_medium" name="utm_medium" required>
+
+            <label for="utm_campaign">Campaign:</label>
+            <input type="text" id="utm_campaign" name="utm_campaign" required>
+
+            <label for="utm_term">Term:</label>
+            <input type="text" id="utm_term" name="utm_term">
+
+            <label for="utm_content">Content:</label>
+            <input type="text" id="utm_content" name="utm_content">
+
+
+            <input type="submit" value="Gerar UTM">
+        </form>
+
+        <div id="generatedLink">
+            <label>Link UTM:</label>
+            <input type="text" id="utmResult" readonly>
+            <button onclick="copyUTMLink()">Copiar Link</button>
+        </div>
+
+        <script>
+            document.getElementById("utmForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const source = document.getElementById("utm_source").value;
+                const medium = document.getElementById("utm_medium").value;
+                const campaign = document.getElementById("utm_campaign").value;
+                const term = document.getElementById("utm_term").value;
+                const content = document.getElementById("utm_content").value;
+                const link = document.getElementById("link").value;
+
+                const utm = `utm_source=${source}&utm_medium=${medium}&utm_campaign=${campaign}` +
+                            (term ? `&utm_term=${term}` : '') +
+                            (content ? `&utm_content=${content}` : '');
+
+                const utmLink = `${link}?${utm}`;
+
+                document.getElementById("utmResult").value = utmLink;
+            });
+
+            function copyUTMLink() {
+                const utmLinkField = document.getElementById("utmResult");
+                utmLinkField.select();
+                document.execCommand("copy");
+                alert("Link UTM copiado para a área de transferência!");
+            }
+        </script>
+    </div>
+</body>
+</html>
