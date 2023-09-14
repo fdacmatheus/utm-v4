@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
@@ -46,7 +47,9 @@
 
         <div id="generatedLinks">
             <h2>Links UTM Gerados:</h2>
-            <ol id="utmList"></ol>
+            <div id="utmListContainer">
+                <ul id="utmList"></ul>
+            </div>
             <button onclick="copyAllUTMLinks()">Copiar Todos</button>
         </div>
 
@@ -90,7 +93,9 @@
             }
 
             function clearUTMLink() {
-                document.getElementById("utmResult").value = "";
+                generatedLinks.length = 0; // Clear the generated links array
+                document.getElementById("utmList").innerHTML = ""; // Clear the list of generated links
+                document.getElementById("utmResult").value = ""; // Clear the input field
             }
         </script>
     </div>

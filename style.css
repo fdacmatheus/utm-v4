@@ -108,3 +108,26 @@ select:focus {
 select:hover {
     border-color: #ff3a3d; /* Cor quando o mouse está sobre o select */
 }
+
+#utmListContainer {
+    max-height: 80px; /* Adjust the max-height as needed */
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f0f0f0; /* Fundo branco claro */
+}
+
+/* Estilo para a lista de links UTM */
+ul#utmList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo para cada item da lista de links UTM */
+ul#utmList li {
+    margin-bottom: 5px;
+    word-break: break-all; /* Break long URLs */
+}
