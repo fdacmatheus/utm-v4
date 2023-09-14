@@ -84,3 +84,27 @@ h1 {
     border-radius: 5px;
     background-color: #f0f0f0; /* Fundo branco claro */
 }
+
+/* Estilo para os selects */
+select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove o estilo padrão do sistema operacional */
+    background-color: white;
+    color: #282828;
+}
+
+/* Estilo para os selects quando focados */
+select:focus {
+    border-color: #ff3a3d; /* Cor quando o select está focado */
+    outline: none; /* Remove a borda de foco padrão */
+}
+
+/* Estilo para os selects quando o mouse estiver sobre eles */
+select:hover {
+    border-color: #ff3a3d; /* Cor quando o mouse está sobre o select */
+}

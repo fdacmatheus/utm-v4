@@ -16,19 +16,29 @@
 
             <label for="link">Link:</label>
             <input type="text" id="link" name="link">
-            <label for="utm_source">Source:</label>
-            <input type="text" id="utm_source" name="utm_source">
 
-            <label for="utm_medium">Medium:</label>
-            <input type="text" id="utm_medium" name="utm_medium">
+            <label for="utm_medium">Tipo de tráfego:</label>
+            <select id="utm_medium" name="utm_medium">
+                <option value="cpc">CPC</option>
+                <option value="social">Social</option>
+                <option value="organic">Organic</option>
+            </select>
 
-            <label for="utm_campaign">Campaign:</label>
+            <label for="utm_source">Plataforma:</label>
+            <select id="utm_source" name="utm_source">
+                <option value="facebook">Facebook</option>
+                <option value="google">Google</option>
+                <option value="tiktok">TikTok</option>
+                <option value="linkedin">LinkedIn</option>
+            </select>
+
+            <label for="utm_campaign">Campanha:</label>
             <input type="text" id="utm_campaign" name="utm_campaign">
 
-            <label for="utm_term">Term:</label>
+            <label for="utm_term">Grupo de anúncios:</label>
             <input type="text" id="utm_term" name="utm_term">
 
-            <label for="utm_content">Content:</label>
+            <label for="utm_content">Nome do anúncio:</label>
             <input type="text" id="utm_content" name="utm_content">
 
             <input type="submit" value="Gerar UTM">
