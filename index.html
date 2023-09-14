@@ -44,13 +44,15 @@
             <button type="button" onclick="clearUTMLink()">Limpar</button>
         </form>
 
-        <div id="generatedLink">
-            <label>Link UTM:</label>
-            <input type="text" id="utmResult" readonly>
-            <button onclick="copyUTMLink()">Copiar Link</button>
+        <div id="generatedLinks">
+            <h2>Links UTM Gerados:</h2>
+            <ol id="utmList"></ol>
+            <button onclick="copyAllUTMLinks()">Copiar Todos</button>
         </div>
 
         <script>
+            const generatedLinks = [];
+            
             document.getElementById("utmForm").addEventListener("submit", function(event) {
                 event.preventDefault();
 
@@ -66,15 +68,25 @@
                             (content ? `&utm_content=${content}` : '');
 
                 const utmLink = `${link}?${utm}`;
+                generatedLinks.push(utmLink);
+
+                const utmList = document.getElementById("utmList");
+                const li = document.createElement("li");
+                li.textContent = utmLink;
+                utmList.appendChild(li);
 
                 document.getElementById("utmResult").value = utmLink;
             });
 
-            function copyUTMLink() {
-                const utmLinkField = document.getElementById("utmResult");
-                utmLinkField.select();
+            function copyAllUTMLinks() {
+                const utmLinksToCopy = generatedLinks.join("\n");
+                const tempTextArea = document.createElement("textarea");
+                tempTextArea.value = utmLinksToCopy;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
                 document.execCommand("copy");
-                alert("Link UTM copiado para a área de transferência!");
+                document.body.removeChild(tempTextArea);
+                alert("Links UTM copiados para a área de transferência!");
             }
 
             function clearUTMLink() {
