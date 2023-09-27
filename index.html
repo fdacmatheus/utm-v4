@@ -8,13 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="container">
-        <h1>Gerador de UTM v4 Telles e Freire </h1>
+        <h1>Gerador de UTM v4 Telles e Freire</h1>
         <form id="utmForm">
-
             <label for="link">Link:</label>
             <input type="text" id="link" name="link">
 
@@ -55,15 +53,15 @@
 
         <script>
             const generatedLinks = [];
-            
+
             document.getElementById("utmForm").addEventListener("submit", function(event) {
                 event.preventDefault();
 
-                const source = document.getElementById("utm_source").value;
-                const medium = document.getElementById("utm_medium").value;
-                const campaign = document.getElementById("utm_campaign").value;
-                const term = document.getElementById("utm_term").value;
-                const content = document.getElementById("utm_content").value;
+                const source = document.getElementById("utm_source").value.toLowerCase();
+                const medium = document.getElementById("utm_medium").value.toLowerCase();
+                const campaign = document.getElementById("utm_campaign").value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+                const term = document.getElementById("utm_term").value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+                const content = document.getElementById("utm_content").value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
                 const link = document.getElementById("link").value;
 
                 const utm = `utm_source=${source}&utm_medium=${medium}&utm_campaign=${campaign}` +
@@ -75,7 +73,7 @@
 
                 const utmList = document.getElementById("utmList");
                 const li = document.createElement("li");
-                li.textContent = utmLink;
+                li.textContent = utmLink + ' '; // Adiciona um espaço após cada link
                 utmList.appendChild(li);
 
                 document.getElementById("utmResult").value = utmLink;
